@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://img.icons8.com/color/48/compass.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>About Us | ApexWild Hunting & Outdoor Sports</title>
+
+    <script src="tailwind.js"></script>
+    <style>
+        /* --- Refined Modern Outdoor Palette --- */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-card-bg: #FFFFFF;
+            --color-primary-text: #111827; 
+            --color-secondary-text: #4B5563; 
+            --color-accent: #E05A1B; 
+            --color-accent-hover: #C24810;
+            --color-theme-green: #233827;
+            --color-border: #E5E7EB; 
+            --color-hover: #F3F4F6; 
+            --color-footer-bg: #0F1611;
+            --color-footer-text: #D1D5DB; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #0D120E;
+            --color-card-bg: #151D17;
+            --color-primary-text: #F9FAFB;
+            --color-secondary-text: #9CA3AF;
+            --color-accent: #E05A1B; 
+            --color-accent-hover: #F97316;
+            --color-theme-green: #2B4230;
+            --color-border: #1F2E23; 
+            --color-hover: #1A241C;
+            --color-footer-bg: #070B08;
+            --color-footer-text: #9CA3AF;
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            transition: background-color 0.25s, color 0.25s;
+            overflow-x: hidden;
+        }
+        
+        .font-brand {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-card { background-color: var(--color-card-bg); }
+        .bg-hover { background-color: var(--color-hover); }
+        .bg-accent { background-color: var(--color-accent); }
+        .bg-theme-green { background-color: var(--color-theme-green); }
+        .border-border { border-color: var(--color-border); }
+        .border-accent { border-color: var(--color-accent); }
+        .hover\:text-accent:hover { color: var(--color-accent) !important; }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+        }
+
+        #main-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+        }
+        #main-footer .footer-heading {
+            color: #FFFFFF !important;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+        #main-footer .footer-link {
+            color: #9CA3AF;
+            transition: all 0.2s ease;
+        }
+        #main-footer .footer-link:hover {
+            color: var(--color-accent);
+            padding-left: 3px;
+        }
+
+        /* Nav Link Underline */
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+            padding-top: 0.35rem;
+            padding-bottom: 0.35rem;
+            font-weight: 600;
+            font-size: 0.925rem;
+            color: var(--color-primary-text);
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; bottom: -2px;
+            height: 2px;
+            background-color: var(--color-accent);
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+            border-radius: 2px;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            transform: scaleX(1);
+        }
+        .nav-link.active {
+            color: var(--color-accent) !important;
+        }
+
+        /* DROPDOWN */
+        .dropdown-wrapper { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+            min-width: 200px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-6px);
+            transition: all 0.2s ease;
+            overflow: hidden;
+        }
+        .dropdown-wrapper:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+            display: block;
+        }
+        .dropdown-menu a {
+            display: block;
+            padding: 0.75rem 1.1rem;
+            color: var(--color-primary-text);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .dropdown-menu a:last-child { border-bottom: none; }
+        .dropdown-menu a:hover, .dropdown-menu a.active {
+            background-color: var(--color-hover);
+            color: var(--color-accent);
+            padding-left: 1.35rem;
+        }
+
+        @media (max-width: 1024px) {
+            .dropdown-menu { position: static; display: none; opacity: 1; visibility: visible; transform: none; box-shadow: none; }
+            .dropdown-wrapper:hover .dropdown-menu { display: block; }
+        }
+
+        /* Clean Buttons */
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: white;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(224, 90, 27, 0.3);
+        }
+    </style>
+</head>
+<body class="antialiased flex flex-col min-h-screen">
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 z-50 border-b border-border bg-background shadow-sm" id="main-header" style="background-color: var(--color-background) !important; opacity: 1 !important;">
+        <nav class="container mx-auto px-6 py-3.5 flex items-center justify-between">
+            
+            <!-- CLEAN PROFESSIONAL LOGO -->
+            <a href="index.html" class="flex items-center gap-3 group">    
+                <div class="w-10 h-10 rounded-xl bg-[#233827] flex items-center justify-center text-white shadow-sm transition-transform group-hover:scale-105">
+                    <svg class="w-6 h-6 text-[#E05A1B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="8"></circle>
+                        <circle cx="12" cy="12" r="2.5" fill="currentColor"></circle>
+                        <line x1="12" y1="2" x2="12" y2="6"></line>
+                        <line x1="12" y1="18" x2="12" y2="22"></line>
+                        <line x1="2" y1="12" x2="6" y2="12"></line>
+                        <line x1="18" y1="12" x2="22" y2="12"></line>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-brand font-extrabold text-xl tracking-tight leading-none text-primary-text">
+                        Apex<span class="text-accent">Wild</span>
+                    </span>
+                    <span class="text-[10px] tracking-wider uppercase font-medium text-secondary-text mt-0.5">
+                        Hunting & Outdoor Sports
+                    </span>
+                </div>
+            </a>
+
+            <!-- NAV LINKS -->
+            <div class="hidden xl:flex flex-1 items-center justify-center space-x-8 rtl:space-x-reverse text-primary-text">
+                <!-- Home Dropdown -->
+                <div class="dropdown-wrapper">
+                    <button class="nav-link flex items-center gap-1" id="home-dropdown-btn">
+                        <span>Home</span>
+                        <svg class="w-3.5 h-3.5 ml-0.5 opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="index.html">Home 1</a>
+                        <a href="home2.html">Home 2</a>
+                    </div>
+                </div>
+
+                <!-- Clean Nav Headings -->
+                <a href="products.html" class="nav-link">Products</a>
+                <a href="categories.html" class="nav-link">Categories</a>
+                <a href="safety.html" class="nav-link">Safety & Regulations</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </div>
+
+            <!-- RIGHT ACTION BUTTONS -->
+            <div class="hidden xl:flex items-center gap-3">
+                <button id="theme-toggle" title="Toggle Light/Dark Theme" class="p-2 rounded-lg border border-border text-primary-text hover:text-accent hover:bg-hover transition">
+                    <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </button>
+                <button id="lang-icon" title="Toggle RTL / LTR" class="p-2 rounded-lg border border-border text-primary-text hover:text-accent hover:bg-hover transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+                    </svg>
+                </button>
+                <!-- Professional Contact Us Button -->
+                <a href="contact.html" class="btn-primary px-5 py-2.5 rounded-lg text-sm tracking-wide shadow-sm flex items-center gap-2">
+                    <i class="fa-regular fa-envelope text-xs"></i>
+                    <span>Contact Us</span>
+                </a>
+            </div>
+
+            <!-- MOBILE TOGGLE BUTTON -->
+            <div class="xl:hidden flex items-center gap-2">
+                <button id="mobile-menu-open" class="text-primary-text p-2 rounded-lg border border-border hover:bg-hover">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MAIN BODY -->
+    <main class="flex-grow">
+ <!-- ============================================================
+     SECTION 1 — ABOUT HERO
+     ============================================================ -->
+<section class="relative bg-[#0B110D] text-white py-20 md:py-28 overflow-hidden border-b border-[#1E2C20]" id="about-hero">
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1920&q=85"
+             alt="Wild mountain landscape where ApexWild began"
+             class="w-full h-full object-cover object-center opacity-40">
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0B110D] via-[#0B110D]/70 to-[#0B110D]/80"></div>
+    </div>
+
+    <div class="relative container mx-auto px-6 text-center max-w-3xl flex flex-col items-center">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E05A1B]/20 border border-[#E05A1B]/40 text-[#E05A1B] text-xs font-bold uppercase tracking-widest mb-5">
+            <i class="fa-solid fa-compass"></i>
+            Our Story
+        </span>
+
+        <h1 class="font-brand font-black text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.12] tracking-tight">
+            Built by <span class="text-[#E05A1B]">Hunters</span>,<br class="hidden sm:block">
+            for Hunters
+        </h1>
+
+        <p class="text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed mt-4 max-w-2xl">
+            ApexWild began with a simple frustration: too much gear marketed to hunters had never been tested in real backcountry conditions. So we built a store that only stocks what we'd carry ourselves.
+        </p>
+
+        <div class="flex flex-wrap items-center justify-center gap-3.5 mt-8">
+            <a href="products.html" class="btn-primary px-7 py-3 rounded-xl text-sm font-bold flex items-center gap-2 shadow-lg">
+                <i class="fa-solid fa-binoculars text-xs"></i>
+                Shop Our Gear
+            </a>
+            <a href="contact.html" class="px-7 py-3 rounded-xl text-sm font-semibold border border-white/30 hover:border-white text-white hover:bg-white/10 transition flex items-center gap-2">
+                <i class="fa-regular fa-envelope text-xs"></i>
+                Get in Touch
+            </a>
+        </div>
+
+        <div class="grid grid-cols-3 gap-6 sm:gap-12 mt-12 pt-8 border-t border-white/10 w-full max-w-xl text-center">
+            <div>
+                <span class="font-brand font-black text-2xl text-white block">2014</span>
+                <span class="text-[11px] text-gray-400 uppercase tracking-wider">Founded</span>
+            </div>
+            <div>
+                <span class="font-brand font-black text-2xl text-[#E05A1B] block">25K+</span>
+                <span class="text-[11px] text-gray-400 uppercase tracking-wider">Hunters Served</span>
+            </div>
+            <div>
+                <span class="font-brand font-black text-2xl text-white block">4.9★</span>
+                <span class="text-[11px] text-gray-400 uppercase tracking-wider">Field Rating</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 2 — MISSION & VALUES
+     ============================================================ -->
+<section class="py-14 md:py-20 bg-background" id="mission-section">
+    <div class="container mx-auto px-6">
+
+        <div class="text-center max-w-xl mx-auto mb-12">
+            <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Our Mission</span>
+            <h2 class="font-brand font-extrabold text-primary-text text-2xl sm:text-3xl md:text-4xl tracking-tight">
+                What Drives ApexWild
+            </h2>
+            <p class="text-secondary-text text-sm sm:text-base mt-2">
+                Three principles guide every product we stock and every interaction we have with customers.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+
+            <!-- Principle 1: Field-First Sourcing -->
+            <div class="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="assets/e2.jpg" 
+                         alt="Field-First Sourcing in Mountain Terrain" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    <span class="absolute top-3 left-3 bg-[#E05A1B] text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider shadow">
+                        Principle 01
+                    </span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="font-brand font-bold text-primary-text text-lg mb-2 group-hover:text-accent transition">Field-First Sourcing</h3>
+                    <p class="text-secondary-text text-sm leading-relaxed flex-1">
+                        We only stock gear that has survived real backcountry use and sub-zero conditions — no showroom-only products, no untested imports.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Principle 2: Honest Guidance -->
+            <div class="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="assets/e3.jpg" 
+                         alt="Honest Outfitter Guidance" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    <span class="absolute top-3 left-3 bg-[#E05A1B] text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider shadow">
+                        Principle 02
+                    </span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="font-brand font-bold text-primary-text text-lg mb-2 group-hover:text-accent transition">Honest Guidance</h3>
+                    <p class="text-secondary-text text-sm leading-relaxed flex-1">
+                        Every team member is an active hunter and tracker. We tell you what works and what doesn't in rugged terrain — even if it costs us a sale.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Principle 3: Conservation Minded -->
+            <div class="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col group">
+                <div class="h-48 overflow-hidden relative">
+                    <img src="assets/e1.jpg" 
+                         alt="Conservation Minded Wilderness" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+                    <span class="absolute top-3 left-3 bg-[#E05A1B] text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider shadow">
+                        Principle 03
+                    </span>
+                </div>
+                <div class="p-6 flex-1 flex flex-col">
+                    <h3 class="font-brand font-bold text-primary-text text-lg mb-2 group-hover:text-accent transition">Conservation Minded</h3>
+                    <p class="text-secondary-text text-sm leading-relaxed flex-1">
+                        A portion of every sale goes directly to state wildlife protection funds and public-access wilderness programs that keep hunting traditions alive.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 3 — OUR STORY TIMELINE
+     ============================================================ -->
+<section class="py-14 md:py-20 bg-hover border-y border-border" id="story-section">
+    <div class="container mx-auto px-6">
+
+        <div class="text-center max-w-xl mx-auto mb-12">
+            <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">The Journey</span>
+            <h2 class="font-brand font-extrabold text-primary-text text-2xl sm:text-3xl md:text-4xl tracking-tight">
+                From Garage to Outfitter Hub
+            </h2>
+            <p class="text-secondary-text text-sm sm:text-base mt-2">
+                A decade of growth, all rooted in the same backcountry cabin it started in.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center mb-12">
+            <div class="relative rounded-2xl overflow-hidden shadow-lg border border-border group">
+                <img src="assets/nn.jpg"
+                     alt="ApexWild founders on a backcountry hunt"
+                     class="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="space-y-5">
+                <span class="text-accent text-xs font-bold uppercase tracking-widest block">Where It Began</span>
+                <h3 class="font-brand font-extrabold text-primary-text text-2xl sm:text-3xl tracking-tight">
+                    A Cabin, Two Friends, and a Bad Set of Binoculars
+                </h3>
+                <p class="text-secondary-text text-sm leading-relaxed">
+                    In 2014, co-founders Mark Hensley and Ray Cordova were glassing a Montana ridge with binoculars that fogged up in the rain. That night, they started sketching what a hunting store built by actual hunters would look like.
+                </p>
+                <p class="text-secondary-text text-sm leading-relaxed">
+                    A decade later, ApexWild serves 25,000+ hunters across North America — but the mission hasn't changed: only stock gear we'd trust in the field ourselves.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            <div class="bg-card border border-border rounded-2xl p-6 shadow-sm">
+                <span class="font-brand font-black text-2xl text-accent block mb-2">2014</span>
+                <h4 class="font-brand font-bold text-primary-text text-sm mb-1.5">Founded</h4>
+                <p class="text-secondary-text text-xs leading-relaxed">Opened as a small online store with 40 curated optics products.</p>
+            </div>
+
+            <div class="bg-card border border-border rounded-2xl p-6 shadow-sm">
+                <span class="font-brand font-black text-2xl text-accent block mb-2">2018</span>
+                <h4 class="font-brand font-bold text-primary-text text-sm mb-1.5">Expanded</h4>
+                <p class="text-secondary-text text-xs leading-relaxed">Added archery, apparel, and basecamp departments — 300+ SKUs.</p>
+            </div>
+
+            <div class="bg-card border border-border rounded-2xl p-6 shadow-sm">
+                <span class="font-brand font-black text-2xl text-accent block mb-2">2021</span>
+                <h4 class="font-brand font-bold text-primary-text text-sm mb-1.5">Field Tested</h4>
+                <p class="text-secondary-text text-xs leading-relaxed">Launched our in-house testing program with 12 field pros.</p>
+            </div>
+
+            <div class="bg-card border border-border rounded-2xl p-6 shadow-sm">
+                <span class="font-brand font-black text-2xl text-accent block mb-2">2026</span>
+                <h4 class="font-brand font-bold text-primary-text text-sm mb-1.5">Today</h4>
+                <p class="text-secondary-text text-xs leading-relaxed">Serving 25K+ hunters with 500+ products and 4.9★ rating.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 4 — THE TEAM / FIELD EXPERTS
+     ============================================================ -->
+<section class="py-14 md:py-20 bg-background" id="team-section">
+    <div class="container mx-auto px-6">
+
+        <div class="text-center max-w-xl mx-auto mb-12">
+            <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Meet the Team</span>
+            <h2 class="font-brand font-extrabold text-primary-text text-2xl sm:text-3xl md:text-4xl tracking-tight">
+                Field Experts Behind ApexWild
+            </h2>
+            <p class="text-secondary-text text-sm sm:text-base mt-2">
+                Our team includes guides, competitive archers, and lifelong hunters — not just sales staff.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+
+            <div class="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col h-full">
+                <div class="h-64 sm:h-72 overflow-hidden bg-hover relative">
+                    <img src="assets/hd.jpg"
+                         alt="Mark Hensley, Co-Founder"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-brand font-bold text-primary-text text-base">Mark Hensley</h3>
+                        <p class="text-accent text-xs font-semibold uppercase tracking-wider mt-0.5">Co-Founder · Optics Lead</p>
+                        <p class="text-secondary-text text-xs leading-relaxed mt-2.5">20+ years of western big-game hunting. Field-tests every optic before we list it.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col h-full">
+                <div class="h-64 sm:h-72 overflow-hidden bg-hover relative">
+                    <img src="assets/hd2.jpg"
+                         alt="Ray Cordova, Co-Founder"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-brand font-bold text-primary-text text-base">Ray Cordova</h3>
+                        <p class="text-accent text-xs font-semibold uppercase tracking-wider mt-0.5">Co-Founder · Archery Lead</p>
+                        <p class="text-secondary-text text-xs leading-relaxed mt-2.5">Former competitive archer and bow tech. Builds and tunes every rig sold in-store.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition group flex flex-col h-full">
+                <div class="h-64 sm:h-72 overflow-hidden bg-hover relative">
+                    <img src="assets/hd3.jpg"
+                         alt="Jenna Moss, Gear Specialist"
+                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500">
+                </div>
+                <div class="p-5 flex-1 flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-brand font-bold text-primary-text text-base">Jenna Moss</h3>
+                        <p class="text-accent text-xs font-semibold uppercase tracking-wider mt-0.5">Field Gear Specialist</p>
+                        <p class="text-secondary-text text-xs leading-relaxed mt-2.5">Backpack hunter and gear tester. Runs our basecamp and apparel evaluations.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 5 — WHY CHOOSE US / TRUST
+     ============================================================ -->
+<section class="py-14 md:py-20 bg-theme-green" id="why-us-section">
+    <div class="container mx-auto px-6">
+
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <span class="text-[#E05A1B] text-xs font-bold uppercase tracking-widest block mb-1">Why ApexWild</span>
+            <h2 class="font-brand font-extrabold text-white text-2xl sm:text-3xl md:text-4xl tracking-tight">
+                What Sets Us Apart
+            </h2>
+            <p class="text-gray-300 text-sm sm:text-base mt-2">
+                There are plenty of gear stores. Here's why hunters keep coming back to ApexWild.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                <div class="w-12 h-12 rounded-xl bg-[#E05A1B]/20 flex items-center justify-center text-[#E05A1B] mx-auto mb-4">
+                    <i class="fa-solid fa-eye text-lg"></i>
+                </div>
+                <h3 class="font-brand font-bold text-white text-sm mb-1.5">Real Field Testing</h3>
+                <p class="text-gray-300 text-xs leading-relaxed">Every product gets at least one full season of real-world use before we stock it.</p>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                <div class="w-12 h-12 rounded-xl bg-[#E05A1B]/20 flex items-center justify-center text-[#E05A1B] mx-auto mb-4">
+                    <i class="fa-solid fa-user-tie text-lg"></i>
+                </div>
+                <h3 class="font-brand font-bold text-white text-sm mb-1.5">Expert Staff</h3>
+                <p class="text-gray-300 text-xs leading-relaxed">Every employee is an active hunter — no seasonal sales hires.</p>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                <div class="w-12 h-12 rounded-xl bg-[#E05A1B]/20 flex items-center justify-center text-[#E05A1B] mx-auto mb-4">
+                    <i class="fa-solid fa-truck-fast text-lg"></i>
+                </div>
+                <h3 class="font-brand font-bold text-white text-sm mb-1.5">24-Hour Dispatch</h3>
+                <p class="text-gray-300 text-xs leading-relaxed">Orders ship within one business day — no seasonal delays.</p>
+            </div>
+
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-6 text-center">
+                <div class="w-12 h-12 rounded-xl bg-[#E05A1B]/20 flex items-center justify-center text-[#E05A1B] mx-auto mb-4">
+                    <i class="fa-solid fa-leaf text-lg"></i>
+                </div>
+                <h3 class="font-brand font-bold text-white text-sm mb-1.5">Conservation Partner</h3>
+                <p class="text-gray-300 text-xs leading-relaxed">A percentage of every sale funds public-access and wildlife programs.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ============================================================
+     SECTION 6 — ABOUT FINAL CTA
+     ============================================================ -->
+<section class="py-14 md:py-20 bg-background" id="about-cta">
+    <div class="container mx-auto px-6">
+        <div class="max-w-3xl mx-auto bg-hover border border-border rounded-3xl p-10 sm:p-14 text-center shadow-xl">
+
+            <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/30 text-accent text-xs font-bold uppercase tracking-widest mb-5">
+                <i class="fa-solid fa-binoculars"></i>
+                Ready to Explore
+            </span>
+
+            <h2 class="font-brand font-extrabold text-primary-text text-2xl sm:text-3xl md:text-4xl leading-tight tracking-tight">
+                Come Gear Up With Us
+            </h2>
+
+            <p class="text-secondary-text text-sm sm:text-base leading-relaxed mt-4 max-w-lg mx-auto">
+                Whether you're a first-time hunter or a 30-year veteran, our team can help you gear up for your next hunt. Shop online or reach out — we're always happy to talk gear.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 mt-8">
+                <a href="products.html" class="btn-primary px-7 py-3 rounded-lg text-sm font-bold flex items-center justify-center gap-2 w-full sm:w-auto">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Shop All Gear
+                </a>
+                <a href="contact.html" class="px-7 py-3 rounded-lg text-sm font-semibold border border-border text-primary-text hover:border-accent hover:text-accent transition flex items-center justify-center gap-2 w-full sm:w-auto">
+                    <i class="fa-regular fa-envelope"></i>
+                    Contact Our Team
+                </a>
+            </div>
+
+            <p class="text-secondary-text text-xs mt-7 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-shield-halved text-accent"></i>
+                Field-tested gear · Expert advice · 30-day returns
+            </p>
+
+        </div>
+    </div>
+</section>
+    </main>
+
+    <!-- MOBILE DRAWER -->
+    <div id="mobile-menu-drawer" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300">
+        <div id="drawer-backdrop" class="absolute inset-0 bg-black opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+        <div id="drawer-content" class="absolute top-0 left-0 right-0 bg-background rounded-b-2xl shadow-2xl p-6 xl:hidden max-h-[85vh] overflow-y-auto transform translate-y-[-100%] transition-transform duration-300 ease-out border-b border-border">
+            <div class="flex justify-between items-center pb-4 border-b border-border">
+                <a href="index.html" class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-lg bg-[#233827] flex items-center justify-center text-white">
+                        <svg class="w-5 h-5 text-[#E05A1B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="8"></circle>
+                            <circle cx="12" cy="12" r="2.5" fill="currentColor"></circle>
+                            <line x1="12" y1="2" x2="12" y2="6"></line>
+                            <line x1="12" y1="18" x2="12" y2="22"></line>
+                            <line x1="2" y1="12" x2="6" y2="12"></line>
+                            <line x1="18" y1="12" x2="22" y2="12"></line>
+                        </svg>
+                    </div>
+                    <span class="font-brand font-bold text-lg text-primary-text">Apex<span class="text-accent">Wild</span></span>
+                </a>
+                <button id="mobile-menu-close" class="text-primary-text hover:text-accent"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+            </div>
+            <nav class="flex flex-col space-y-2 py-4">
+                <div>
+                    <button class="block text-primary-text font-semibold text-base py-2 w-full text-left flex justify-between items-center" id="mobile-homes-toggle">
+                        Home <svg class="w-4 h-4 transform transition-transform duration-200 text-primary-text" id="homes-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div id="mobile-homes-menu" class="hidden pl-4 flex flex-col space-y-1 mt-1 border-l-2 border-border">
+                        <a href="index.html" class="block text-secondary-text hover:text-accent text-sm py-1.5">Home 1</a>
+                        <a href="home2.html" class="block text-secondary-text hover:text-accent text-sm py-1.5">Home 2</a>
+                    </div>
+                </div>
+                <a href="products.html" class="block text-primary-text font-semibold text-base py-2">Products</a>
+                <a href="categories.html" class="block text-primary-text font-semibold text-base py-2">Categories</a>
+                <a href="safety.html" class="block text-primary-text font-semibold text-base py-2">Safety & Regulations</a>
+                <a href="about.html" class="block text-primary-text font-semibold text-base py-2">About Us</a>
+                <a href="contact.html" class="block text-primary-text font-semibold text-base py-2">Contact</a>
+            </nav>
+            <div class="pt-4 border-t border-border mt-2 flex justify-around items-center">
+                <button id="mobile-lang-icon-drawer" class="flex flex-col items-center text-primary-text"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" /></svg><span class="text-xs mt-1 text-secondary-text">RTL</span></button>
+                <button id="drawer-theme-toggle" class="flex flex-col items-center text-primary-text">
+                    <svg class="w-5 h-5 light-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                    <svg class="w-5 h-5 dark-icon hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                    <span class="text-xs mt-1 text-secondary-text">Theme</span>
+                </button>
+            </div>
+            <div class="flex mt-5 gap-3 w-full">
+                <a href="contact.html" class="flex-1 btn-primary text-center py-2.5 rounded-lg font-semibold text-sm shadow-sm">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="main-footer" class="pt-16 pb-8 transition-colors duration-200">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-gray-800">
+                <!-- Brand Summary -->
+                <div class="lg:col-span-2">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#233827] flex items-center justify-center text-white">
+                            <svg class="w-5 h-5 text-[#E05A1B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="8"></circle>
+                                <circle cx="12" cy="12" r="2.5" fill="currentColor"></circle>
+                                <line x1="12" y1="2" x2="12" y2="6"></line>
+                                <line x1="12" y1="18" x2="12" y2="22"></line>
+                                <line x1="2" y1="12" x2="6" y2="12"></line>
+                                <line x1="18" y1="12" x2="22" y2="12"></line>
+                            </svg>
+                        </div>
+                        <span class="font-brand font-extrabold text-xl tracking-tight text-white">
+                            Apex<span class="text-accent">Wild</span>
+                        </span>
+                    </a>
+                    <p class="text-sm leading-relaxed max-w-sm text-gray-400 mt-4 font-normal">
+                        Premium hunting equipment, precision optics, apparel, and rugged gear built for outdoor sports and backcountry expeditions.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-accent transition"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-accent transition"><i class="fab fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-gray-900 border border-gray-800 flex items-center justify-center text-gray-400 hover:text-accent transition"><i class="fab fa-youtube text-sm"></i></a>
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div>
+                    <h4 class="footer-heading mb-4">Products</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="products.html" class="footer-link">Hunting Optics</a></li>
+                        <li><a href="products.html" class="footer-link">Archery & Bows</a></li>
+                        <li><a href="products.html" class="footer-link">Camo Apparel</a></li>
+                        <li><a href="products.html" class="footer-link">Basecamp Gear</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div>
+                    <h4 class="footer-heading mb-4">Categories</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="categories.html" class="footer-link">Seasonal Gear</a></li>
+                        <li><a href="categories.html" class="footer-link">Field Processing</a></li>
+                        <li><a href="categories.html" class="footer-link">Blinds & Stands</a></li>
+                        <li><a href="categories.html" class="footer-link">Navigation</a></li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="footer-heading mb-4">Store & Info</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="safety.html" class="footer-link">Safety & Regulations</a></li>
+                        <li><a href="about.html" class="footer-link">About Us</a></li>
+                        <li><a href="contact.html" class="footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Location / Hours -->
+                <div>
+                    <h4 class="footer-heading mb-4">Location</h4>
+                    <ul class="space-y-3 text-gray-400 text-sm">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-location-dot text-accent mt-1 text-xs"></i>
+                            <span class="text-xs leading-relaxed">742 Ridgeback Trail,<br>Pine Ridge Outpost</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fa-solid fa-clock text-accent mt-1 text-xs"></i>
+                            <span class="text-xs">Mon - Sat: 8:00 AM - 7:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 text-center text-gray-500 text-xs">
+                © 2026 ApexWild Hunting & Outdoor Sports Store. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const html = document.documentElement;
+
+            // Drawer Control
+            const menuDrawer = document.getElementById('mobile-menu-drawer');
+            const menuContent = document.getElementById('drawer-content');
+            const menuBackdrop = document.getElementById('drawer-backdrop');
+
+            const openDrawer = () => {
+                menuDrawer.classList.remove('pointer-events-none');
+                menuContent.classList.remove('translate-y-[-100%]');
+                menuBackdrop.classList.add('opacity-50', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            };
+            const closeDrawer = () => {
+                menuContent.classList.add('translate-y-[-100%]');
+                menuBackdrop.classList.remove('opacity-50', 'pointer-events-auto');
+                setTimeout(() => { menuDrawer.classList.add('pointer-events-none'); document.body.style.overflow = ''; }, 300);
+            };
+
+            document.getElementById('mobile-menu-open').addEventListener('click', openDrawer);
+            document.getElementById('mobile-menu-close').addEventListener('click', closeDrawer);
+            menuBackdrop.addEventListener('click', closeDrawer);
+
+            // Accordion for Mobile Home Dropdown
+            const toggle = document.getElementById('mobile-homes-toggle');
+            toggle?.addEventListener('click', () => {
+                const menu = document.getElementById('mobile-homes-menu');
+                const icon = document.getElementById('homes-icon');
+                if(menu) menu.classList.toggle('hidden');
+                if(icon) icon.classList.toggle('rotate-180');
+            });
+
+            // Theme Toggle
+            const themeToggles = [document.getElementById('theme-toggle'), document.getElementById('drawer-theme-toggle')];
+            const applyTheme = (theme) => {
+                html.setAttribute('data-theme', theme);
+                document.querySelectorAll('.light-icon').forEach(i => i.classList.toggle('hidden', theme === 'dark'));
+                document.querySelectorAll('.dark-icon').forEach(i => i.classList.toggle('hidden', theme === 'light'));
+            };
+            themeToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                localStorage.setItem('theme', next);
+                applyTheme(next);
+            }));
+            applyTheme(localStorage.getItem('theme') || 'light');
+
+            // RTL Toggle
+            const langToggles = [document.getElementById('lang-icon'), document.getElementById('mobile-lang-icon-drawer')];
+            langToggles.forEach(btn => btn?.addEventListener('click', () => {
+                const current = localStorage.getItem('language') === 'ar' ? 'en' : 'ar';
+                localStorage.setItem('language', current);
+                html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
+            }));
+            html.setAttribute('dir', localStorage.getItem('language') === 'ar' ? 'rtl' : 'ltr');
+
+            // Robust Active Nav Link Highlighting for all pages
+            const setActiveNavigation = () => {
+                let currentFile = window.location.pathname.split('/').pop().toLowerCase() || 'index.html';
+                if (!currentFile || currentFile === '/' || currentFile === '') {
+                    currentFile = 'index.html';
+                }
+
+                // Desktop links
+                document.querySelectorAll('header .nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    const href = link.getAttribute('href');
+                    if (href && href.toLowerCase() === currentFile) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Desktop Home Dropdown
+                const homeDropdownBtn = document.getElementById('home-dropdown-btn');
+                if (currentFile === 'index.html' || currentFile === 'home2.html') {
+                    homeDropdownBtn?.classList.add('active');
+                }
+
+                // Dropdown inner links
+                document.querySelectorAll('.dropdown-menu a').forEach(dropLink => {
+                    dropLink.classList.remove('active');
+                    const href = dropLink.getAttribute('href');
+                    if (href && href.toLowerCase() === currentFile) {
+                        dropLink.classList.add('active');
+                    }
+                });
+
+                // Mobile drawer links
+                document.querySelectorAll('#drawer-content nav a').forEach(mobLink => {
+                    const href = mobLink.getAttribute('href');
+                    if (href && href.toLowerCase() === currentFile) {
+                        mobLink.classList.add('text-accent');
+                        mobLink.classList.remove('text-primary-text', 'text-secondary-text');
+                    } else {
+                        if (!mobLink.closest('#mobile-homes-menu')) {
+                            mobLink.classList.add('text-primary-text');
+                            mobLink.classList.remove('text-accent');
+                        }
+                    }
+                });
+
+                if (currentFile === 'index.html' || currentFile === 'home2.html') {
+                    document.getElementById('mobile-homes-toggle')?.classList.add('text-accent');
+                }
+            };
+
+            setActiveNavigation();
+        });
+    </script>
+</body>
+</html>
