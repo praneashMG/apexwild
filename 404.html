@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://img.icons8.com/color/48/compass.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>404 - Off The Trail | ApexWild Hunting & Outdoor Sports</title>
+
+    <script src="tailwind.js"></script>
+    <style>
+        /* --- Refined Modern Outdoor Palette --- */
+        :root, html[data-theme='light'] {
+            --color-background: #FFFFFF;
+            --color-card-bg: #FFFFFF;
+            --color-primary-text: #111827; 
+            --color-secondary-text: #4B5563; 
+            --color-accent: #E05A1B; 
+            --color-accent-hover: #C24810;
+            --color-theme-green: #233827;
+            --color-border: #E5E7EB; 
+            --color-hover: #F8FAF7; 
+        }
+        html[data-theme='dark'] {
+            --color-background: #0D120E;
+            --color-card-bg: #151D17;
+            --color-primary-text: #F9FAFB;
+            --color-secondary-text: #9CA3AF;
+            --color-accent: #E05A1B; 
+            --color-accent-hover: #F97316;
+            --color-theme-green: #2B4230;
+            --color-border: #1F2E23; 
+            --color-hover: #151E17; 
+        }
+        
+        body {
+            background-color: var(--color-background);
+            color: var(--color-primary-text);
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            transition: background-color 0.25s, color 0.25s;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .font-brand {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .text-primary-text { color: var(--color-primary-text); }
+        .text-secondary-text { color: var(--color-secondary-text); }
+        .text-accent { color: var(--color-accent); }
+        .bg-background { background-color: var(--color-background); }
+        .bg-card { background-color: var(--color-card-bg); }
+        .bg-hover { background-color: var(--color-hover); }
+        .border-border { border-color: var(--color-border); }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: #FFFFFF;
+            transition: all 0.25s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen relative justify-center items-center px-4 py-8 antialiased selection:bg-[#E05A1B] selection:text-white">
+
+    <!-- Top Floating Quick Controls (Brand Logo & Dark/RTL Mode toggles) -->
+    <div class="fixed top-4 left-4 right-4 flex justify-between items-center z-50 max-w-6xl mx-auto pointer-events-none">
+        <a href="index.html" class="flex items-center gap-2.5 pointer-events-auto bg-card/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-border shadow-sm hover:border-accent transition group">
+            <div class="w-8 h-8 rounded-lg bg-[#233827] flex items-center justify-center text-white shrink-0 group-hover:bg-accent transition-colors">
+                <svg class="w-4 h-4 text-[#E05A1B] group-hover:text-white transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="9"/>
+                    <line x1="12" y1="2" x2="12" y2="7"/>
+                    <line x1="12" y1="17" x2="12" y2="22"/>
+                    <line x1="2" y1="12" x2="7" y2="12"/>
+                    <line x1="17" y1="12" x2="22" y2="12"/>
+                </svg>
+            </div>
+            <div class="flex flex-col">
+                <span class="font-brand font-black text-base tracking-tight text-primary-text leading-none">Apex<span class="text-accent">Wild</span></span>
+                <span class="text-[8px] font-bold tracking-widest text-secondary-text uppercase">Store Home</span>
+            </div>
+        </a>
+
+        <div class="flex items-center gap-2 pointer-events-auto bg-card/90 backdrop-blur-md p-1.5 rounded-xl border border-border shadow-sm">
+            <button id="theme-toggle" title="Toggle Light/Dark Theme" class="p-2 rounded-lg text-primary-text hover:text-accent hover:bg-hover transition">
+                <svg id="theme-icon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+            </button>
+            <button id="lang-icon" title="Toggle RTL / LTR" class="p-2 rounded-lg text-primary-text hover:text-accent hover:bg-hover transition text-xs font-bold">
+                <i class="fa-solid fa-language text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Centered 404 Outfitter Error Box -->
+    <main class="w-full max-w-2xl text-center my-auto px-4 py-8">
+        
+        <!-- Outfitter Badge -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/25 text-accent text-xs font-bold uppercase tracking-wider mb-6">
+            <i class="fa-solid fa-compass-drafting text-sm"></i>
+            <span>Lost Off Trail &bull; Error 404</span>
+        </div>
+
+        <!-- Big 404 Numeric with Reticle Icon -->
+        <div class="relative flex items-center justify-center select-none mb-3">
+            <span class="font-brand font-black text-7xl sm:text-9xl tracking-tighter text-primary-text opacity-95">4</span>
+            <div class="w-16 h-16 sm:w-24 sm:h-24 mx-2 sm:mx-4 rounded-3xl bg-accent/15 border border-accent/30 flex items-center justify-center text-accent shadow-inner">
+                <i class="fa-solid fa-crosshairs text-3xl sm:text-5xl animate-pulse"></i>
+            </div>
+            <span class="font-brand font-black text-7xl sm:text-9xl tracking-tighter text-primary-text opacity-95">4</span>
+        </div>
+
+        <h1 class="font-brand font-extrabold text-2xl sm:text-4xl text-primary-text leading-tight mb-3">
+            Terrain Not Found.
+        </h1>
+        <p class="text-secondary-text text-sm sm:text-base leading-relaxed max-w-lg mx-auto mb-8">
+            The trail you followed has reached a dead end, or this hunting zone has been relocated. Let's reorient your compass and get you back to basecamp.
+        </p>
+
+        <!-- Primary Action Navigation Buttons -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 w-full sm:w-auto mb-10">
+            <a href="index.html" class="btn-primary w-full sm:w-auto px-6 py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 shadow-md">
+                <i class="fa-solid fa-house text-xs"></i>
+                Return to Basecamp (Home 1)
+            </a>
+            <a href="products.html" class="w-full sm:w-auto px-6 py-3 rounded-xl text-sm font-semibold border border-border hover:border-accent bg-card text-primary-text hover:text-accent transition flex items-center justify-center gap-2 shadow-sm">
+                <i class="fa-solid fa-grid-2 text-xs"></i>
+                Browse Equipment Catalog
+            </a>
+            <a href="contact.html" class="w-full sm:w-auto px-6 py-3 rounded-xl text-sm font-semibold border border-border hover:border-accent bg-card text-primary-text hover:text-accent transition flex items-center justify-center gap-2 shadow-sm">
+                <i class="fa-solid fa-headset text-xs"></i>
+                Ask an Outfitter
+            </a>
+        </div>
+
+        <!-- Quick Landmark Waypoints Card -->
+        <div class="bg-card border border-border rounded-2xl p-5 sm:p-6 shadow-sm text-left max-w-xl mx-auto">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-accent block mb-3">
+                <i class="fa-solid fa-signs-post mr-1"></i> Quick Nav Waypoints
+            </span>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 text-xs">
+                <a href="home2.html" class="p-2.5 rounded-lg bg-hover border border-border hover:border-accent hover:text-accent transition flex items-center gap-2 font-medium">
+                    <i class="fa-solid fa-compass text-accent text-[11px]"></i> Home 2 (Wild)
+                </a>
+                <a href="categories.html" class="p-2.5 rounded-lg bg-hover border border-border hover:border-accent hover:text-accent transition flex items-center gap-2 font-medium">
+                    <i class="fa-solid fa-layer-group text-accent text-[11px]"></i> Categories
+                </a>
+                <a href="safety.html" class="p-2.5 rounded-lg bg-hover border border-border hover:border-accent hover:text-accent transition flex items-center gap-2 font-medium">
+                    <i class="fa-solid fa-shield-halved text-accent text-[11px]"></i> Safety &amp; Laws
+                </a>
+                <a href="about.html" class="p-2.5 rounded-lg bg-hover border border-border hover:border-accent hover:text-accent transition flex items-center gap-2 font-medium">
+                    <i class="fa-solid fa-users text-accent text-[11px]"></i> About Our Team
+                </a>
+                <a href="products.html" class="p-2.5 rounded-lg bg-hover border border-border hover:border-accent hover:text-accent transition flex items-center gap-2 font-medium">
+                    <i class="fa-solid fa-crosshairs text-accent text-[11px]"></i> Hunting Optics
+                </a>
+                <a href="contact.html" class="p-2.5 rounded-lg bg-hover border border-border hover:border-accent hover:text-accent transition flex items-center gap-2 font-medium">
+                    <i class="fa-solid fa-location-dot text-accent text-[11px]"></i> Store Location
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Theme & Direction Logic (Preserves User Preference) -->
+    <script>
+        const html = document.documentElement;
+        const themeBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const langBtn = document.getElementById('lang-icon');
+
+        const sunIcon = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />`;
+        const moonIcon = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />`;
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+        themeIcon.innerHTML = savedTheme === 'dark' ? moonIcon : sunIcon;
+
+        themeBtn.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            themeIcon.innerHTML = next === 'dark' ? moonIcon : sunIcon;
+        });
+
+        const savedDir = localStorage.getItem('dir') || 'ltr';
+        html.setAttribute('dir', savedDir);
+        langBtn.addEventListener('click', () => {
+            const curDir = html.getAttribute('dir');
+            const nextDir = curDir === 'rtl' ? 'ltr' : 'rtl';
+            html.setAttribute('dir', nextDir);
+            localStorage.setItem('dir', nextDir);
+        });
+    </script>
+</body>
+</html>
