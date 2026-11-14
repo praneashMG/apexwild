@@ -181,8 +181,8 @@
 <body class="antialiased flex flex-col min-h-screen">
 
     <!-- MAIN NAVBAR: 100% Solid Opaque -->
-    <header class="sticky top-0 z-50 border-b border-border bg-background shadow-sm" id="main-header" style="background-color: var(--color-background) !important; opacity: 1 !important;">
-        <nav class="container mx-auto px-6 py-3.5 flex items-center justify-between">
+    <header class="sticky top-0 z-50 border-b border-border bg-background shadow-sm w-full" id="main-header" style="background-color: var(--color-background) !important; opacity: 1 !important;">
+        <nav class="container mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
             
             <!-- CLEAN PROFESSIONAL LOGO -->
             <a href="index.html" class="flex items-center gap-3 group">    
@@ -289,15 +289,15 @@
                     High-performance equipment engineered for trail trekking, mountain athletics, sport archery, alpine ascents, and remote wilderness expeditions.
                 </p>
 
-                <!-- Responsive Buttons (Side-by-side flex row on mobile) -->
-                <div class="flex flex-row items-center justify-center gap-2.5 sm:gap-3.5 mt-6 sm:mt-8 w-full max-w-md sm:max-w-none">
-                    <a href="products.html" class="btn-primary flex-1 sm:flex-none justify-center px-4 sm:px-7 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 shadow-lg text-center whitespace-nowrap">
+                <!-- Responsive Buttons (Stacked on mobile, side-by-side on sm+) -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3.5 mt-6 sm:mt-8 w-full max-w-sm sm:max-w-none">
+                    <a href="products.html" class="btn-primary w-full sm:w-auto justify-center px-4 sm:px-7 py-3 rounded-lg sm:rounded-xl text-xs sm:text-sm font-bold flex items-center gap-1.5 sm:gap-2 shadow-lg text-center">
                         <i class="fa-solid fa-compass text-xs"></i>
-                        Shop Outdoor Sports Gear
+                        <span>Shop Outdoor Sports Gear</span>
                     </a>
-                    <a href="categories.html" class="flex-1 sm:flex-none justify-center px-4 sm:px-7 py-2.5 sm:py-3 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold border border-white/30 hover:border-white text-white hover:bg-white/10 transition flex items-center gap-1.5 sm:gap-2 text-center whitespace-nowrap">
+                    <a href="categories.html" class="w-full sm:w-auto justify-center px-4 sm:px-7 py-3 rounded-lg sm:rounded-xl text-xs sm:text-sm font-semibold border border-white/30 hover:border-white text-white hover:bg-white/10 transition flex items-center gap-1.5 sm:gap-2 text-center">
                         <i class="fa-solid fa-layer-group text-xs"></i>
-                        Browse Sports Disciplines
+                        <span>Browse Sports Disciplines</span>
                     </a>
                 </div>
 
@@ -324,7 +324,7 @@
              SECTION 2 — OUTDOOR SPORTS DISCIPLINES (CARD GRID)
              ============================================================ -->
         <section class="py-14 md:py-20 bg-background transition-colors border-b border-border">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 
                 <div class="text-center max-w-2xl mx-auto mb-12">
                     <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Our Disciplines</span>
@@ -423,7 +423,7 @@
              SECTION 3 — TECHNICAL GEAR PERFORMANCE (FEATURE BANNER)
              ============================================================ -->
         <section class="py-14 md:py-20 bg-hover border-b border-border">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
                     
                     <!-- Left: Large Product Showcase Card -->
@@ -499,7 +499,7 @@
              SECTION 4 — EXPEDITION HIGHLIGHT PRODUCTS (3-COLUMN CARDS)
              ============================================================ -->
         <section class="py-14 md:py-20 bg-background border-b border-border">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 
                 <div class="text-center max-w-xl mx-auto mb-11">
                     <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Curated Catalog</span>
@@ -621,7 +621,7 @@
              SECTION 5 — ETHICAL WILDLIFE & SAFETY PROTOCOL
              ============================================================ -->
         <section class="py-14 md:py-16 bg-hover border-b border-border">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="bg-[#142017] rounded-2xl p-7 sm:p-10 border border-[#273B2B] text-white">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
                         <div class="md:col-span-2 space-y-2">
@@ -654,7 +654,7 @@
              SECTION 6 — NEWSLETTER & COMMUNITY DISPATCH (FINAL CTA)
              ============================================================ -->
         <section class="py-14 md:py-18 bg-background">
-            <div class="container mx-auto px-6 text-center max-w-2xl">
+            <div class="container mx-auto px-4 sm:px-6 text-center max-w-2xl">
                 <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Basecamp Dispatch</span>
                 <h2 class="font-brand font-extrabold text-primary-text text-2xl sm:text-3xl tracking-tight">
                     Stay Ahead of Opening Day
@@ -732,7 +732,7 @@
 
     <!-- FOOTER -->
     <footer id="main-footer" class="pt-16 pb-8 transition-colors duration-200">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-gray-800">
                 <!-- Brand Summary -->
                 <div class="lg:col-span-2">

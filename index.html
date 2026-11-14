@@ -181,8 +181,8 @@
 <body class="antialiased flex flex-col min-h-screen">
 
     <!-- MAIN NAVBAR: 100% Solid Opaque -->
-    <header class="sticky top-0 z-50 border-b border-border bg-background shadow-sm" id="main-header" style="background-color: var(--color-background) !important; opacity: 1 !important;">
-        <nav class="container mx-auto px-6 py-3.5 flex items-center justify-between">
+    <header class="sticky top-0 z-50 border-b border-border bg-background shadow-sm w-full" id="main-header" style="background-color: var(--color-background) !important; opacity: 1 !important;">
+        <nav class="container mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
             
             <!-- CLEAN PROFESSIONAL LOGO -->
             <a href="index.html" class="flex items-center gap-3 group">    
@@ -268,7 +268,7 @@
                             <i class="fa-solid fa-crosshairs text-xs shrink-0"></i>
                             <span class="truncate">Hunting Gear Pro Shop &bull; 2026 Season Launch</span>
                         </div>
-                        <h1 class="font-brand font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-primary-text leading-[1.15] tracking-tight">
+                        <h1 class="font-brand font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-primary-text leading-tight sm:leading-[1.15] tracking-tight">
                             Built For Extreme Terrain.<br>
                             <span class="text-accent">Hunting Gear Engineered For The Shot.</span>
                         </h1>
@@ -276,31 +276,31 @@
                             Field-grade hunting optics, silent archery rigs, weather-resistant camo hunting apparel, and scent-proof processing gear built to withstand sub-zero mountain stalks.
                         </p>
                         
-                        <!-- Responsive Action Buttons (Flex side by side on mobile with equal flex) -->
-                        <div class="flex flex-row items-center gap-3 pt-2 w-full sm:w-auto">
-                            <a href="products.html" class="btn-primary flex-1 sm:flex-none justify-center px-5 sm:px-7 py-3 rounded-lg text-xs sm:text-sm font-bold flex items-center gap-2 shadow-md text-center whitespace-nowrap">
+                        <!-- Responsive Action Buttons (Flex-col on xs, flex-row on sm+) -->
+                        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 pt-2 w-full sm:w-auto">
+                            <a href="products.html" class="btn-primary w-full sm:w-auto justify-center px-4 sm:px-7 py-3 rounded-lg text-xs sm:text-sm font-bold flex items-center gap-2 shadow-md text-center">
                                 <i class="fa-solid fa-binoculars text-xs"></i>
-                                Explore Hunting Gear
+                                <span>Explore Hunting Gear</span>
                             </a>
-                            <a href="categories.html" class="flex-1 sm:flex-none justify-center px-5 sm:px-7 py-3 rounded-lg text-xs sm:text-sm font-semibold border border-border hover:border-accent bg-card text-primary-text hover:text-accent transition flex items-center gap-2 text-center whitespace-nowrap">
+                            <a href="categories.html" class="w-full sm:w-auto justify-center px-4 sm:px-7 py-3 rounded-lg text-xs sm:text-sm font-semibold border border-border hover:border-accent bg-card text-primary-text hover:text-accent transition flex items-center gap-2 text-center">
                                 <i class="fa-solid fa-layer-group text-xs"></i>
-                                View Hunting Categories
+                                <span>View Hunting Categories</span>
                             </a>
                         </div>
 
                         <!-- Quick Key Spec Metrics: Compact 3-Column on Mobile -->
-                        <div class="grid grid-cols-3 gap-3 sm:gap-6 pt-5 border-t border-border text-center sm:text-left">
-                            <div class="py-2.5 px-1.5 sm:p-0 bg-hover sm:bg-transparent rounded-xl border border-border sm:border-none">
-                                <span class="font-brand font-black text-lg sm:text-2xl text-primary-text block">100%</span>
-                                <span class="text-[10px] sm:text-xs text-secondary-text block mt-0.5 leading-tight">Hunting Tested</span>
+                        <div class="grid grid-cols-3 gap-2 sm:gap-6 pt-5 border-t border-border text-center sm:text-left">
+                            <div class="py-2.5 px-1 sm:p-0 bg-hover sm:bg-transparent rounded-xl border border-border sm:border-none">
+                                <span class="font-brand font-black text-base sm:text-2xl text-primary-text block">100%</span>
+                                <span class="text-[9px] sm:text-xs text-secondary-text block mt-0.5 leading-tight">Hunting Tested</span>
                             </div>
-                            <div class="py-2.5 px-1.5 sm:p-0 bg-hover sm:bg-transparent rounded-xl border border-border sm:border-none">
-                                <span class="font-brand font-black text-lg sm:text-2xl text-accent block">48-Hr</span>
-                                <span class="text-[10px] sm:text-xs text-secondary-text block mt-0.5 leading-tight">Field Gear Dispatch</span>
+                            <div class="py-2.5 px-1 sm:p-0 bg-hover sm:bg-transparent rounded-xl border border-border sm:border-none">
+                                <span class="font-brand font-black text-base sm:text-2xl text-accent block">48-Hr</span>
+                                <span class="text-[9px] sm:text-xs text-secondary-text block mt-0.5 leading-tight">Gear Dispatch</span>
                             </div>
-                            <div class="py-2.5 px-1.5 sm:p-0 bg-hover sm:bg-transparent rounded-xl border border-border sm:border-none">
-                                <span class="font-brand font-black text-lg sm:text-2xl text-primary-text block">Lifetime</span>
-                                <span class="text-[10px] sm:text-xs text-secondary-text block mt-0.5 leading-tight">Hunting Warranty</span>
+                            <div class="py-2.5 px-1 sm:p-0 bg-hover sm:bg-transparent rounded-xl border border-border sm:border-none">
+                                <span class="font-brand font-black text-base sm:text-2xl text-primary-text block">Lifetime</span>
+                                <span class="text-[9px] sm:text-xs text-secondary-text block mt-0.5 leading-tight">Warranty</span>
                             </div>
                         </div>
                     </div>
@@ -352,7 +352,7 @@
 
         <!-- 2. CATEGORY TILES: Compact Layout -->
         <section class="py-12 md:py-16 bg-background transition-colors">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 
                 <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-3">
                     <div>
@@ -447,7 +447,7 @@
 
         <!-- 3. FEATURED RIGS & EQUIPMENT SHOWCASE: Compact Spacing -->
         <section class="py-12 md:py-16 bg-hover border-y border-border">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 
                 <div class="text-center max-w-xl mx-auto mb-10">
                     <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Field Ready</span>
@@ -573,8 +573,8 @@
 
         <!-- 4. SAFETY & REGULATIONS STRIP: Streamlined -->
         <section class="py-12 bg-background">
-            <div class="container mx-auto px-6">
-                <div class="bg-[#1C281F] text-white rounded-2xl p-6 sm:p-9 border border-[#2B3E30] flex flex-col lg:flex-row items-center justify-between gap-6">
+            <div class="container mx-auto px-4 sm:px-6">
+                <div class="bg-[#1C281F] text-white rounded-2xl p-5 sm:p-9 border border-[#2B3E30] flex flex-col lg:flex-row items-center justify-between gap-6">
                     <div class="space-y-2.5 max-w-2xl">
                         <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#E05A1B]">
                             <i class="fa-solid fa-shield-halved"></i> Ethical Hunting Sportsmanship
@@ -601,7 +601,7 @@
 
         <!-- 5. OUTFITTER TRUST: Compact Cards with Even Word Counts -->
         <section class="py-12 md:py-16 bg-hover border-t border-border">
-            <div class="container mx-auto px-6">
+            <div class="container mx-auto px-4 sm:px-6">
                 <div class="text-center max-w-xl mx-auto mb-10">
                     <span class="text-accent text-xs font-bold uppercase tracking-widest block mb-1">Hunting Assurance</span>
                     <h2 class="font-brand font-extrabold text-primary-text text-2xl sm:text-3xl tracking-tight">
@@ -718,7 +718,7 @@
 
     <!-- FOOTER -->
     <footer id="main-footer" class="pt-16 pb-8 transition-colors duration-200">
-        <div class="container mx-auto px-6">
+        <div class="container mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 pb-12 border-b border-gray-800">
                 <!-- Brand Summary -->
                 <div class="lg:col-span-2">
